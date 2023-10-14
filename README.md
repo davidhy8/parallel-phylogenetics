@@ -18,7 +18,9 @@ Trace file outputs from MCMC phylogenetic analyses were summarized using LogAnal
 1. Simulated HIV samples: comparison between parallel/sequential phylogenetic trees with FAVITES simulation tree as the reference trees, 
 2. Simulated HIV samples: comparison between parallel phylogenetic trees with long phylogenetic trees as the reference trees, and
 3. SARS-CoV-2 samples: comparison between the parallel phylogenetic trees with long phylogenetic trees as the reference trees. 
-To test for statistical significance, the Mann-Whitney U-test was also performed on the distance metrics and MCMC parameter estimates. The U-test was used to compare the following: 
+To test for statistical significance, the Mann-Whitney U-test was also performed on the distance metrics and MCMC parameter estimates.
+
+The U-test was used to compare the following: 
 1. Parameter estimates obtained from MCMC ran in parallel vs MCMC ran sequentially,
 2. Distance metrics obtained from the comparison of sequential vs “true” MCC trees, and parallel vs “true” MCC trees in the analyses involving simulated data, and
 3. Distance metrics obtained from the comparison of sequential vs parallel MCC trees in all analyses.
