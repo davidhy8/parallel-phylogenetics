@@ -19,7 +19,23 @@ The following steps were performed to determine the number of desired sequences 
 The Nybbler Github repository is found at the following link: https://github.com/nodrogluap/nybbler.
 
 ## Creating phylogenetic trees (TransCOVID pipeline)
-The TransCovid pipeline was used to create phylogenetic trees for the simulated HIV and SARS-CoV-2 sequence subsamples. In the pipeline, multiple sequence alignment was performed on all sequence subsamples using Multiple Alignment using Fast Fourier Transform (MAFFT). •	Next, BEAUTi from the BEAST2 software package was used to set-up the parameters used in the phylogenetic analyses. In the analysis, tip dates were activated, the Generalized Time Reversible (GTR) site model with a gamma category count of 4 was used as well as a relaxed log normal clock model and the Birth Death Skyline Serial model as a prior. Parallelized phylogenetic analyses were run with MCMC chain lengths of 100 million for 29 separate runs for each sample with BEAST2 and sequential runs were run for MCMC chains of around 3 billion. The independent MCMC chains in the parallelized MCMC runs were then combined afterwards via LogCombiner. All corresponding tree and log output files were then resampled with LogCombiner from BEAST2 with a resample frequency of 5000. Finally, maximum clade likelihood phylogenetic trees were extracted with TreeAnnotator from BEAST2 using common ancestor node heights and a 10% burn in. 
+The TransCovid pipeline was used to create phylogenetic trees for the simulated HIV and SARS-CoV-2 sequence subsamples which can be found at https://github.com/theLongLab/TransCOVID.
+
+In the pipeline, multiple sequence alignment was performed on all sequence subsamples using Multiple Alignment using Fast Fourier Transform (MAFFT) for nucleotides.
+
+Next, BEAUTi from the BEAST2 software package was used to set-up the parameters used in the phylogenetic analyses. In the analysis the following configurations were used:
+- tip dates were activated,
+- the Generalized Time Reversible (GTR) site model with a gamma category count of 4 was used,
+- the relaxed log normal clock model and the Birth Death Skyline Serial model was used as a prior
+- tracelog file name: $(filebase).log
+- treelog file name: $(filebase).trees
+
+Parallelized phylogenetic analyses were run with MCMC chain lengths of 100 million for 29 separate runs for each sample with BEAST2 and sequential runs were run for MCMC chains of around 3 billion. 
+
+The BEAST2 configuration files were created for the parallel run by copying the original 100 million iteration run into 29 separate files. For example using Unix the following was performed:
+> for i in {1..30}; do; cp file.xml file_$i.xml; done
+
+The independent MCMC chains in the parallelized MCMC runs were then combined afterwards via LogCombiner. All corresponding tree and log output files were then resampled with LogCombiner from BEAST2 with a resample frequency of 5000. Finally, maximum clade likelihood phylogenetic trees were extracted with TreeAnnotator from BEAST2 using common ancestor node heights and a 10% burn in. 
 
 ## Data analysis 
 Trace file outputs from MCMC phylogenetic analyses were summarized using LogAnalyser from BEAST2. NEXUS trees obtained from TreeAnnotator were converted into the Newick tree file format using the software Figtree with “save all trees” selected. Distance metrics for the phylogenetic trees were calculated by using the software TreeCMP with the following argument: -d qt pd rf ms um rfw gdu. The following comparisons were performed: 
