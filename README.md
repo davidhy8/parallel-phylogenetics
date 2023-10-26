@@ -10,7 +10,7 @@ The configuration files used to create the simulation data were:
 1. *HIV_FAVITES_BA_EXPECTEDDEGREE_02_ART_0.125x_CONFIG.json* for the simulation dataset with perfect sampling, and
 2. *CONFIG_10percent_sampling.json* for the simulation dataset with 10% sampling rate.
 
-For more information on how to use FAVITES please visit [here] (https://github.com/niemasd/FAVITES).
+For more information on how to use FAVITES please visit https://github.com/niemasd/FAVITES.
 
 ## Preparation of SARS-CoV-2 data
 A total of six 1000 FASTA sequence subsamples were obtained from GISAID’s SARS-CoV-2 database using random and weighted sampling from SARS-CoV-2 sequences between the dates of February 1st, 2020, to October 31st, 2020 that were available on GISAID as of March 1st, 2021. Random sampling was performed using the Software Augur (augur filter) from NextStrain on the FASTA file and associated metadata obtained from GISAID on March 1st, 2021(13). The following parameters were used: --min-date 2020-02-01 --max-date 2020-10-31 –subsample-max-sequences 1000.  
