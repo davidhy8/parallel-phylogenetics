@@ -34,16 +34,16 @@ Parallelized phylogenetic analyses were run with MCMC chain lengths of 100 milli
 > for i in {1..30}; do; cp file.xml file_$i.xml; done
 
 A sample xml file for the parallel run and sequential run are included:
-1. Sample xml file from parallel run:
-2. Sample xml file from sequential run:
+1. Sample xml file from parallel run: *parallel.xml*
+2. Sample xml file from sequential run: *long.xml*
 
-The independent MCMC chains in the parallelized MCMC runs were then combined afterwards via LogCombiner. All corresponding tree and log output files were then resampled with LogCombiner from BEAST2 with a resample frequency of 5000. Finally, maximum clade likelihood phylogenetic trees were extracted with TreeAnnotator from BEAST2 using common ancestor node heights and a 10% burn in. 
+The independent MCMC chains in the parallelized MCMC runs were then combined afterwards via LogCombiner. All corresponding tree and log output files were then resampled with LogCombiner from BEAST2 with a resample frequency of 5000. Finally, maximum clade likelihood phylogenetic trees were extracted with TreeAnnotator from BEAST2 using common ancestor node heights and a 10% burn in. Trace file outputs from MCMC phylogenetic analyses were summarized using LogAnalyser from BEAST2. 
 
 Sample scripts used to run BEAST2, logcombiner and treeannotator in the analysis are included. 
 
 ## Data analysis 
-Trace file outputs from MCMC phylogenetic analyses were summarized using LogAnalyser from BEAST2. NEXUS trees obtained from TreeAnnotator were converted into the Newick tree file format using the software Figtree with “save all trees” selected. Distance metrics for the phylogenetic trees were calculated by using the software TreeCMP with the following argument: 
-< -d qt pd rf ms um rfw gdu
+NEXUS trees obtained from TreeAnnotator were converted into the Newick tree file format using the software Figtree with “save all trees” selected. Distance metrics for the phylogenetic trees were calculated by using the software TreeCMP with the following argument: 
+> -d qt pd rf ms um rfw gdu
 
 The following comparisons were performed: 
 1. Simulated HIV samples: comparison between parallel/sequential phylogenetic trees with FAVITES simulation tree as the reference trees, 
@@ -55,4 +55,7 @@ The U-test was used to compare the following:
 1. Parameter estimates obtained from MCMC ran in parallel vs MCMC ran sequentially,
 2. Distance metrics obtained from the comparison of sequential vs “true” MCC trees, and parallel vs “true” MCC trees in the analyses involving simulated data, and
 3. Distance metrics obtained from the comparison of sequential vs parallel MCC trees in all analyses.
-The two tailed student’s t-test was also performed to compare the parameters from MCMC with “true” values in the analyses involving simulated data. All boxplots and violin plots shown in the figures were prepared in R with the package “ggplot2” and modified using Inkscape. 
+
+The two tailed student’s t-test was also performed to compare the parameters from MCMC with “true” values in the analyses involving simulated data. 
+
+All boxplots and violin plots shown in the figures were prepared in R with the package “ggplot2” and modified using Inkscape. R scripts used to perform the U-test, t-test and create the violin plots are included.
