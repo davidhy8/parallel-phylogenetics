@@ -42,7 +42,10 @@ The independent MCMC chains in the parallelized MCMC runs were then combined aft
 Sample scripts used to run BEAST2, logcombiner and treeannotator in the analysis are included. 
 
 ## Data analysis 
-Trace file outputs from MCMC phylogenetic analyses were summarized using LogAnalyser from BEAST2. NEXUS trees obtained from TreeAnnotator were converted into the Newick tree file format using the software Figtree with “save all trees” selected. Distance metrics for the phylogenetic trees were calculated by using the software TreeCMP with the following argument: -d qt pd rf ms um rfw gdu. The following comparisons were performed: 
+Trace file outputs from MCMC phylogenetic analyses were summarized using LogAnalyser from BEAST2. NEXUS trees obtained from TreeAnnotator were converted into the Newick tree file format using the software Figtree with “save all trees” selected. Distance metrics for the phylogenetic trees were calculated by using the software TreeCMP with the following argument: 
+< -d qt pd rf ms um rfw gdu
+
+The following comparisons were performed: 
 1. Simulated HIV samples: comparison between parallel/sequential phylogenetic trees with FAVITES simulation tree as the reference trees, 
 2. Simulated HIV samples: comparison between parallel phylogenetic trees with long phylogenetic trees as the reference trees, and
 3. SARS-CoV-2 samples: comparison between the parallel phylogenetic trees with long phylogenetic trees as the reference trees. 
