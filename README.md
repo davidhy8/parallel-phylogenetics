@@ -30,12 +30,16 @@ Next, BEAUTi from the BEAST2 software package was used to set-up the parameters 
 - tracelog file name: $(filebase).log
 - treelog file name: $(filebase).trees
 
-Parallelized phylogenetic analyses were run with MCMC chain lengths of 100 million for 29 separate runs for each sample with BEAST2 and sequential runs were run for MCMC chains of around 3 billion. 
-
-The BEAST2 configuration files were created for the parallel run by copying the original 100 million iteration run into 29 separate files. For example using Unix the following was performed:
+Parallelized phylogenetic analyses were run with MCMC chain lengths of 100 million for 29 separate runs for each sample with BEAST2 and sequential runs were run for MCMC chains of around 3 billion. The BEAST2 configuration files were created for the parallel run by copying the original 100 million iteration run into 29 separate files. This was performed on Unix:
 > for i in {1..30}; do; cp file.xml file_$i.xml; done
 
+A sample xml file for the parallel run and sequential run are included:
+1. Sample xml file from parallel run:
+2. Sample xml file from sequential run:
+
 The independent MCMC chains in the parallelized MCMC runs were then combined afterwards via LogCombiner. All corresponding tree and log output files were then resampled with LogCombiner from BEAST2 with a resample frequency of 5000. Finally, maximum clade likelihood phylogenetic trees were extracted with TreeAnnotator from BEAST2 using common ancestor node heights and a 10% burn in. 
+
+Sample scripts used to run BEAST2, logcombiner and treeannotator in the analysis are included. 
 
 ## Data analysis 
 Trace file outputs from MCMC phylogenetic analyses were summarized using LogAnalyser from BEAST2. NEXUS trees obtained from TreeAnnotator were converted into the Newick tree file format using the software Figtree with “save all trees” selected. Distance metrics for the phylogenetic trees were calculated by using the software TreeCMP with the following argument: -d qt pd rf ms um rfw gdu. The following comparisons were performed: 
